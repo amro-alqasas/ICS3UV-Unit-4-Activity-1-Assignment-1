@@ -1,0 +1,46 @@
+function calculateStudentAverage(): void {
+    // Ask for number of marks
+    const numMarksInput = prompt("How many marks will you enter today? ");
+    const numMarks = parseInt(numMarksInput || "0");
+    
+    // Validate input
+    if (isNaN(numMarks) || numMarks <= 0) {
+        console.log("Please enter a valid positive number of marks.");
+        return;
+    }
+    
+    let total = 0;
+    
+    // Use a for loop to read each mark
+    for (let i = 1; i <= numMarks; i++) {
+        const markInput = prompt(`Enter mark ${i}: `);
+        const mark = parseFloat(markInput || "0");
+        
+        if (isNaN(mark)) {
+            console.log(`Invalid input for mark ${i}. Please enter a number.`);
+            return;
+        }
+        
+        total += mark;
+    }
+    
+    // Calculate average
+    const average = total / numMarks;
+    
+    // Display results
+    console.log(`You have entered ${numMarks} marks. The student's average is ${average.toFixed(2)}%.`);
+    
+    // Give feedback based on average
+    if (average <= 49) {
+        console.log("The student is failing.");
+    } else if (average >= 50 && average <= 69) {
+        console.log("The student's performance is just under average.");
+    } else if (average >= 70 && average <= 79) {
+        console.log("The student's performance is average.");
+    } else {
+        console.log("The student is on the honour roll.");
+    }
+}
+
+// Run the program
+calculateStudentAverage();
